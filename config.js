@@ -1,0 +1,1 @@
+$$.registerUrl("http://test.com/data", "data.html");

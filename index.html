@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>fake ajax</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="src/fauxjax.js"></script>
+    <script src="config.js"></script>
+    <script>
+        /*implement*/
+        $(function () {
+            $("#myButton").click(function () {
+                $.get("http://test.com/data", function (response, raw) {
+                    $("#data").text($("#data").text() + raw);
+                });
+            });
+        });
+        $(function () {
+            $("#download").click(function () {
+                var href = "data:text/plain;charset=utf-8,";
+                href += encodeURI($("#data").val());
+                this.href = href;
+            });
+        });
+    </script>
+</head>
+<body>
+<button id="myButton">get data</button>
+<a id="download" download="test.txt">download</a>
+<div></div>
+<textarea id="data" style="height: 400px;"></textarea>
+</body>
+</html>
